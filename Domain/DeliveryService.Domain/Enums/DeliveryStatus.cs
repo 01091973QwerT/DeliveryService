@@ -5,15 +5,9 @@
 /// </summary>
 public enum DeliveryStatus
 {
-    /// <summary>Создан</summary>
-    Created = 0,
-
-    /// <summary>В пути</summary>
-    InTransit = 1,
-
-    /// <summary>Доставлен</summary>
-    Delivered = 2,
-
-    /// <summary>Отменён</summary>
-    Cancelled = 3
+    Created = 0,      // Создан
+    InTransit = 1,    // В пути
+    PickedUp = 2,     // Забрали (нельзя отменить)
+    Delivered = 3,    // Доставлен
+    Cancelled = 4     // Отменён
 }

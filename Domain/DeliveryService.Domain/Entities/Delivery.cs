@@ -7,36 +7,21 @@ namespace DeliveryService.Domain.Entities;
 
 /// <summary>
 /// Доставка
-/// Связи: 
-/// - многие Delivery к одному Sender
-/// - многие Delivery к одному Receiver
 /// </summary>
 public class Delivery : Entity<Guid>
 {
-    // Внешние ключи и навигационные свойства
-    public Guid SenderId { get; private set; }
     public Sender Sender { get; private set; }
-
-    public Guid ReceiverId { get; private set; }
     public Receiver Receiver { get; private set; }
-
-    // Value Objects для адресов
     public AddressText PickupAddress { get; private set; }
     public AddressText DeliveryAddress { get; private set; }
-
-    // Статусы (Enums)
     public DeliveryStatus Status { get; private set; }
     public PaymentMethod PaymentMethod { get; private set; }
     public PaymentStatus PaymentStatus { get; private set; }
-
-    // Демонстрация паспорта получателем
     public bool? ReceiverPassportShown { get; private set; }
-
-    // Временные метки
     public DateTime CreatedAt { get; private set; }
     public DateTime? UpdatedAt { get; private set; }
 
-    private Delivery() { }
+    protected Delivery() { }
 
     public Delivery(
         Sender sender,
@@ -52,108 +37,92 @@ public class Delivery : Entity<Guid>
         DeliveryAddress = deliveryAddress ?? throw new ArgumentNullException(nameof(deliveryAddress));
         PaymentMethod = paymentMethod;
 
-        SenderId = sender.Id;
-        ReceiverId = receiver.Id;
         Status = DeliveryStatus.Created;
         PaymentStatus = PaymentStatus.Pending;
         CreatedAt = DateTime.UtcNow;
     }
 
-    /// <summary>
-    /// Use Case: Выбор способа оплаты
-    /// </summary>
-    public void SelectPaymentMethod(PaymentMethod paymentMethod)
+    public bool SelectPaymentMethod(PaymentMethod paymentMethod)
     {
+        if (PaymentMethod == paymentMethod)
+            return false;
+
         PaymentMethod = paymentMethod;
         UpdatedAt = DateTime.UtcNow;
+        return true;
     }
 
-    /// <summary>
-    /// Use Case: Онлайн оплата
-    /// </summary>
-    public void PayOnline()
+    public bool PayOnline()
     {
         if (PaymentStatus != PaymentStatus.Pending)
-            throw new InvalidDeliveryStatusException($"Невозможно оплатить доставку {Id}. Текущий статус оплаты: {PaymentStatus}");
+            return false;
 
         PaymentStatus = PaymentStatus.Paid;
         UpdatedAt = DateTime.UtcNow;
+        return true;
     }
 
-    /// <summary>
-    /// Use Case: Наличные при получении
-    /// </summary>
-    public void PayByCashOnDelivery()
-    {
-        if (PaymentMethod != PaymentMethod.Cash)
-            throw new InvalidOperationException($"Оплата наличными доступна только при выборе способа оплаты 'Наличные'. Текущий способ: {PaymentMethod}");
-
-        // Статус оплаты остается Pending до момента получения
-        UpdatedAt = DateTime.UtcNow;
-    }
-
-    /// <summary>
-    /// Use Case: Терминал при получении
-    /// </summary>
-    public void PayByTerminalOnDelivery()
-    {
-        if (PaymentMethod != PaymentMethod.Terminal)
-            throw new InvalidOperationException($"Оплата терминалом доступна только при выборе способа оплаты 'Терминал'. Текущий способ: {PaymentMethod}");
-
-        UpdatedAt = DateTime.UtcNow;
-    }
-
-    /// <summary>
-    /// Use Case: Начать доставку (только после оплаты)
-    /// </summary>
-    public void StartDelivery()
+    public bool StartDelivery()
     {
         if (Status != DeliveryStatus.Created)
-            throw new InvalidDeliveryStatusException($"Невозможно начать доставку {Id}. Текущий статус: {Status}. Ожидаемый статус: {DeliveryStatus.Created}");
+            return false;
 
         if (PaymentStatus != PaymentStatus.Paid)
-            throw new DeliveryNotPaidException(Id, PaymentStatus.ToString());
+            return false;
 
         Status = DeliveryStatus.InTransit;
         UpdatedAt = DateTime.UtcNow;
+        return true;
     }
 
     /// <summary>
-    /// Use Case: Демонстрация паспорта получателем
+    /// Отметить, что груз забрали (переход в статус PickedUp)
     /// </summary>
-    public void ShowPassport()
-    {
-        ReceiverPassportShown = true;
-        UpdatedAt = DateTime.UtcNow;
-    }
-
-    /// <summary>
-    /// Use Case: Получение доставки (только после демонстрации паспорта)
-    /// </summary>
-    public void ReceiveDelivery()
+    public bool MarkAsPickedUp()
     {
         if (Status != DeliveryStatus.InTransit)
-            throw new InvalidDeliveryStatusException($"Невозможно получить доставку {Id}. Текущий статус: {Status}. Ожидаемый статус: {DeliveryStatus.InTransit}");
+            return false;
+
+        Status = DeliveryStatus.PickedUp;
+        UpdatedAt = DateTime.UtcNow;
+        return true;
+    }
+
+    public bool ShowPassport()
+    {
+        if (ReceiverPassportShown == true)
+            return false;
+
+        ReceiverPassportShown = true;
+        UpdatedAt = DateTime.UtcNow;
+        return true;
+    }
+
+    public bool ReceiveDelivery()
+    {
+        if (Status != DeliveryStatus.PickedUp)
+            return false;
 
         if (ReceiverPassportShown != true)
-            throw new PassportNotShownException(Id);
+            return false;
 
         Status = DeliveryStatus.Delivered;
         UpdatedAt = DateTime.UtcNow;
+        return true;
     }
 
     /// <summary>
-    /// Use Case: Отмена доставки (только если не доставлена)
+    /// Отмена доставки возможна только в статусах Created или InTransit.
+    /// В статусах PickedUp, Delivered, Cancelled отмена запрещена.
     /// </summary>
-    public void CancelDelivery()
+    public bool CancelDelivery()
     {
-        if (Status == DeliveryStatus.Delivered)
-            throw new InvalidDeliveryStatusException($"Невозможно отменить доставку {Id}. Доставка уже получена. Текущий статус: {Status}");
-
-        if (Status == DeliveryStatus.Cancelled)
-            throw new InvalidDeliveryStatusException($"Невозможно отменить доставку {Id}. Доставка уже отменена. Текущий статус: {Status}");
+        // Разрешённые статусы для отмены
+        if (Status != DeliveryStatus.Created && Status != DeliveryStatus.InTransit)
+            return false;
 
         Status = DeliveryStatus.Cancelled;
         UpdatedAt = DateTime.UtcNow;
+        return true;
     }
 }

@@ -1,73 +1,47 @@
 ﻿using DeliveryService.Domain.Base;
 using DeliveryService.Domain.Enums;
 using DeliveryService.ValueObjects;
-using System.Numerics;
 
 namespace DeliveryService.Domain.Entities;
 
-/// <summary>
-/// Получатель
-/// Связи: 
-/// - один Receiver может иметь один PassportData
-/// - один Receiver может иметь много Delivery
-/// </summary>
 public class Receiver : Entity<Guid>
 {
-    // Value Objects
     public Name Name { get; private set; }
     public Phone Phone { get; private set; }
-
-    // Внешний ключ к PassportData
-    public Guid? PassportId { get; private set; }
-
-    // Навигационное свойство (связь с паспортными данными)
     public PassportData? PassportData { get; private set; }
 
-    // Коллекция доставок получателя (ICollection)
-    private readonly ICollection<Delivery> _deliveries = new List<Delivery>();
-    public IReadOnlyCollection<Delivery> Deliveries => _deliveries.ToList().AsReadOnly();
+    private readonly List<Delivery> _deliveries = new();
+    public IReadOnlyCollection<Delivery> Deliveries => _deliveries.AsReadOnly();
 
-    private Receiver() { }
+    protected Receiver() { }
 
     public Receiver(Name name, Phone phone, PassportData? passportData = null)
         : base(Guid.NewGuid())
     {
         Name = name ?? throw new ArgumentNullException(nameof(name));
         Phone = phone ?? throw new ArgumentNullException(nameof(phone));
-
-        if (passportData != null)
-        {
-            PassportData = passportData;
-            PassportId = passportData.Id;
-        }
+        PassportData = passportData;
     }
 
-    /// <summary>
-    /// Внутренний метод для добавления доставки (используется Sender.CreateDelivery)
-    /// </summary>
-    internal void AddDelivery(Delivery delivery)
+    public bool Update(Name? newName = null, Phone? newPhone = null, PassportData? newPassportData = null)
     {
-        if (delivery == null)
-            throw new ArgumentNullException(nameof(delivery));
-        _deliveries.Add(delivery);
+        bool isUpdated = false;
+        if (newName != null && Name != newName) { Name = newName; isUpdated = true; }
+        if (newPhone != null && Phone != newPhone) { Phone = newPhone; isUpdated = true; }
+        if (newPassportData != null && PassportData != newPassportData) { PassportData = newPassportData; isUpdated = true; }
+        return isUpdated;
     }
 
     /// <summary>
-    /// Use Case: Просмотр истории заказов (получатель)
+    /// Получить историю доставок получателя
     /// </summary>
     public IReadOnlyCollection<Delivery> GetDeliveriesHistory()
     {
         return _deliveries.OrderByDescending(d => d.CreatedAt).ToList().AsReadOnly();
     }
 
-    public void Update(Name? name = null, Phone? phone = null, PassportData? passportData = null)
+    internal void AddDelivery(Delivery delivery)
     {
-        if (name != null) Name = name;
-        if (phone != null) Phone = phone;
-        if (passportData != null)
-        {
-            PassportData = passportData;
-            PassportId = passportData.Id;
-        }
+        _deliveries.Add(delivery);
     }
 }

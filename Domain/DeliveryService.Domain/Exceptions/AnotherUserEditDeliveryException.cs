@@ -1,19 +1,17 @@
-﻿namespace DeliveryService.Domain.Exceptions;
+﻿using DeliveryService.Domain.Entities;
 
-/// <summary>
-/// Исключение: попытка редактировать чужую доставку
-/// </summary>
+namespace DeliveryService.Domain.Exceptions;
+
 public class AnotherUserEditDeliveryException : InvalidOperationException
 {
-    public Guid DeliveryId { get; }
-    public Guid CurrentUserId { get; }
-    public Guid OwnerId { get; }
+    public Delivery Delivery { get; }
+    public Sender CurrentSender { get; }
 
-    public AnotherUserEditDeliveryException(Guid deliveryId, Guid currentUserId, Guid ownerId)
-        : base($"Пользователь {currentUserId} не может редактировать доставку {deliveryId}. Владелец доставки: {ownerId}. Редактировать доставку может только её владелец.")
+    // Конструктор с двумя параметрами (используем в Sender)
+    public AnotherUserEditDeliveryException(Delivery delivery, Sender currentSender)
+        : base($"Отправитель {currentSender.Name.Value} не может редактировать доставку {delivery.Id}. Владелец: {delivery.Sender.Name.Value}")
     {
-        DeliveryId = deliveryId;
-        CurrentUserId = currentUserId;
-        OwnerId = ownerId;
+        Delivery = delivery;
+        CurrentSender = currentSender;
     }
 }

@@ -1,18 +1,17 @@
 ﻿namespace DeliveryService.Domain.Base;
 
 /// <summary>
-/// Базовый класс для всех сущностей домена
+/// Базовый класс для всех сущностей
 /// </summary>
-/// <typeparam name="TId">Тип идентификатора (обычно Guid)</typeparam>
-public abstract class Entity<TId>(TId id) where TId : struct, IEquatable<TId>
+/// <typeparam name="TId">Тип идентификатора</typeparam>
+public abstract class Entity<TId> where TId : struct, IEquatable<TId>
 {
-    /// <summary>
-    /// Уникальный идентификатор сущности
-    /// </summary>
-    public TId Id { get; } = id;
+    public TId Id { get; }
 
-    /// <summary>
-    /// Конструктор для EF Core
-    /// </summary>
+    protected Entity(TId id)
+    {
+        Id = id;
+    }
+
     protected Entity() : this(default!) { }
 }
