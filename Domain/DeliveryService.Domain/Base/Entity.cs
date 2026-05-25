@@ -1,17 +1,18 @@
-﻿namespace DeliveryService.Domain.Base;
+namespace DeliveryService.Domain.Base;
 
 /// <summary>
-/// Базовый класс для всех сущностей
+/// Base class for all domain entities.
 /// </summary>
-/// <typeparam name="TId">Тип идентификатора</typeparam>
-public abstract class Entity<TId> where TId : struct, IEquatable<TId>
+/// <typeparam name="TId">Entity identifier type.</typeparam>
+public abstract class Entity<TId>(TId id)
+    where TId : struct, IEquatable<TId>
 {
-    public TId Id { get; }
+    public TId Id { get; } = id;
 
-    protected Entity(TId id)
+    /// <summary>
+    /// Protected parameterless ctor for EF Core.
+    /// </summary>
+    protected Entity() : this(default!)
     {
-        Id = id;
     }
-
-    protected Entity() : this(default!) { }
 }

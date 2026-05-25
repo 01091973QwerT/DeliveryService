@@ -1,0 +1,11 @@
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.ValueObjects\bin\Debug\net8.0\DeliveryService.ValueObjects.deps.json
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.ValueObjects\bin\Debug\net8.0\DeliveryService.ValueObjects.dll
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.ValueObjects\bin\Debug\net8.0\DeliveryService.ValueObjects.pdb
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.ValueObjects\obj\Debug\net8.0\DeliveryService.ValueObjects.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.ValueObjects\obj\Debug\net8.0\DeliveryService.ValueObjects.AssemblyInfoInputs.cache
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.ValueObjects\obj\Debug\net8.0\DeliveryService.ValueObjects.AssemblyInfo.cs
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.ValueObjects\obj\Debug\net8.0\DeliveryService.ValueObjects.csproj.CoreCompileInputs.cache
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.ValueObjects\obj\Debug\net8.0\DeliveryService.ValueObjects.dll
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.ValueObjects\obj\Debug\net8.0\refint\DeliveryService.ValueObjects.dll
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.ValueObjects\obj\Debug\net8.0\DeliveryService.ValueObjects.pdb
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.ValueObjects\obj\Debug\net8.0\ref\DeliveryService.ValueObjects.dll

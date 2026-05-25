@@ -1,13 +1,16 @@
-﻿namespace DeliveryService.Domain.Enums;
+namespace DeliveryService.Domain.Enums;
 
 /// <summary>
-/// Статусы доставки
+/// Статус доставки.
 /// </summary>
 public enum DeliveryStatus
 {
-    Created = 0,      // Создан
-    InTransit = 1,    // В пути
-    PickedUp = 2,     // Забрали (нельзя отменить)
-    Delivered = 3,    // Доставлен
-    Cancelled = 4     // Отменён
+    /// <summary>Создана, ожидает обработки.</summary>
+    Pending,
+    /// <summary>В процессе доставки.</summary>
+    InProgress,
+    /// <summary>Доставлена.</summary>
+    Delivered,
+    /// <summary>Отменена.</summary>
+    Cancelled
 }

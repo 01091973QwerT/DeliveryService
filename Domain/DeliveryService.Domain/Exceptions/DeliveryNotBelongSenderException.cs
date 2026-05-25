@@ -1,19 +1,16 @@
-﻿namespace DeliveryService.Domain.Exceptions;
+using DeliveryService.Domain.Entities;
+
+namespace DeliveryService.Domain.Exceptions;
 
 /// <summary>
-/// Исключение: доставка не принадлежит указанному отправителю
+/// Доставка не принадлежит отправителю.
 /// </summary>
-public class DeliveryNotBelongSenderException : InvalidOperationException
+public sealed class DeliveryNotBelongSenderException(Sender sender, Delivery delivery, string actionDescription)
+    : InvalidOperationException(
+        $"Отправитель «{sender.Name.Value}» (id = {sender.Id}) не может выполнить «{actionDescription}» " +
+        $"для доставки id = {delivery.Id}, так как она ему не принадлежит.")
 {
-    public Guid DeliveryId { get; }
-    public Guid SenderId { get; }
-    public string SenderName { get; }
-
-    public DeliveryNotBelongSenderException(Guid deliveryId, Guid senderId, string senderName)
-        : base($"Доставка {deliveryId} не принадлежит отправителю {senderName} (ID: {senderId}). Отправитель может управлять только своими доставками.")
-    {
-        DeliveryId = deliveryId;
-        SenderId = senderId;
-        SenderName = senderName;
-    }
+    public Sender Sender => sender;
+    public Delivery Delivery => delivery;
+    public string ActionDescription => actionDescription;
 }

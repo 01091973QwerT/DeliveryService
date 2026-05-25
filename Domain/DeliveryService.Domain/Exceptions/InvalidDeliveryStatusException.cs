@@ -1,9 +1,17 @@
-﻿namespace DeliveryService.Domain.Exceptions;
+using DeliveryService.Domain.Entities;
+using DeliveryService.Domain.Enums;
+
+namespace DeliveryService.Domain.Exceptions;
 
 /// <summary>
-/// Исключение: операция требует определенного статуса доставки
+/// Недопустимый статус доставки для выполнения операции.
 /// </summary>
-public class InvalidDeliveryStatusException : InvalidOperationException
+public sealed class InvalidDeliveryStatusException(Delivery delivery, DeliveryStatus currentStatus, string actionDescription)
+    : InvalidOperationException(
+        $"Невозможно выполнить «{actionDescription}» для доставки id = {delivery.Id}: " +
+        $"текущий статус «{currentStatus}» не допускает данную операцию.")
 {
-    public InvalidDeliveryStatusException(string message) : base(message) { }
+    public Delivery Delivery => delivery;
+    public DeliveryStatus CurrentStatus => currentStatus;
+    public string ActionDescription => actionDescription;
 }

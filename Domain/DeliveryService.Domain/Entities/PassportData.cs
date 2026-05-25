@@ -1,131 +1,84 @@
-﻿using DeliveryService.Domain.Base;
+using DeliveryService.Domain.Base;
 using DeliveryService.Domain.Exceptions;
 using DeliveryService.ValueObjects;
 
 namespace DeliveryService.Domain.Entities;
 
+/// <summary>
+/// Паспортные данные (passport_datas).
+/// </summary>
 public class PassportData : Entity<Guid>
 {
-    private PassportSeries? _series;
-    private PassportNumber? _number;
-
-    public PassportSeries Series
-    {
-        get => _series!;
-        private set => _series = value;
-    }
-
-    public PassportNumber Number
-    {
-        get => _number!;
-        private set => _number = value;
-    }
-
-    public string? IssuedBy { get; private set; }
+    public PassportSeries Series { get; private set; } = default!;
+    public PassportNumber Number { get; private set; } = default!;
+    public Name IssuedBy { get; private set; } = default!;
     public DateTime? IssuedDate { get; private set; }
     public DateTime? BirthDate { get; private set; }
-    public string? BirthPlace { get; private set; }
-    public AddressText? RegistrationAddress { get; private set; }
+    public Name BirthPlace { get; private set; } = default!;
+    public Address RegistrationAddress { get; private set; } = default!;
     public DateTime CreatedAt { get; private set; }
     public DateTime UpdatedAt { get; private set; }
 
-    public Sender? Sender { get; private set; }
-    public Receiver? Receiver { get; private set; }
-
-    protected PassportData() { }
+    protected PassportData()
+    {
+    }
 
     public PassportData(
         PassportSeries series,
         PassportNumber number,
-        string? issuedBy = null,
-        DateTime? issuedDate = null,
-        DateTime? birthDate = null,
-        string? birthPlace = null,
-        AddressText? registrationAddress = null)
-        : base(Guid.NewGuid())
+        Name issuedBy,
+        DateTime? issuedDate,
+        DateTime? birthDate,
+        Name birthPlace,
+        Address registrationAddress
+    ) : this(Guid.NewGuid(), series, number, issuedBy, issuedDate, birthDate, birthPlace, registrationAddress, DateTime.UtcNow, DateTime.UtcNow)
     {
-        Series = series ?? throw new ArgumentNullException(nameof(series));
-        Number = number ?? throw new ArgumentNullException(nameof(number));
-        IssuedBy = issuedBy;
-
-        if (birthDate.HasValue && issuedDate.HasValue)
-        {
-            var minIssuedDate = birthDate.Value.AddYears(14);
-            if (issuedDate.Value < minIssuedDate)
-                throw new InvalidPassportDateException(birthDate.Value, issuedDate.Value);
-        }
-
-        IssuedDate = issuedDate;
-        BirthDate = birthDate;
-        BirthPlace = birthPlace;
-        RegistrationAddress = registrationAddress;
-
-        CreatedAt = DateTime.UtcNow;
-        UpdatedAt = DateTime.UtcNow;
     }
 
-    public bool Update(
-        PassportSeries? series = null,
-        PassportNumber? number = null,
-        string? issuedBy = null,
-        DateTime? issuedDate = null,
-        DateTime? birthDate = null,
-        string? birthPlace = null,
-        AddressText? registrationAddress = null)
+    protected PassportData(
+        Guid id,
+        PassportSeries series,
+        PassportNumber number,
+        Name issuedBy,
+        DateTime? issuedDate,
+        DateTime? birthDate,
+        Name birthPlace,
+        Address registrationAddress,
+        DateTime createdAt,
+        DateTime updatedAt
+    ) : base(id)
     {
-        bool updated = false;
+        Series = series ?? throw new ArgumentNullValueException(nameof(series));
+        Number = number ?? throw new ArgumentNullValueException(nameof(number));
+        IssuedBy = issuedBy ?? throw new ArgumentNullValueException(nameof(issuedBy));
+        IssuedDate = issuedDate;
+        BirthDate = birthDate;
+        BirthPlace = birthPlace ?? throw new ArgumentNullValueException(nameof(birthPlace));
+        RegistrationAddress = registrationAddress ?? throw new ArgumentNullValueException(nameof(registrationAddress));
+        CreatedAt = createdAt.Kind == DateTimeKind.Utc ? createdAt : DateTime.SpecifyKind(createdAt, DateTimeKind.Utc);
+        UpdatedAt = updatedAt.Kind == DateTimeKind.Utc ? updatedAt : DateTime.SpecifyKind(updatedAt, DateTimeKind.Utc);
+    }
 
-        if (series != null && Series != series)
-        {
-            Series = series;
-            updated = true;
-        }
-
-        if (number != null && Number != number)
-        {
-            Number = number;
-            updated = true;
-        }
-
-        if (issuedBy != null && IssuedBy != issuedBy)
-        {
-            IssuedBy = issuedBy;
-            updated = true;
-        }
-
-        if (issuedDate.HasValue && IssuedDate != issuedDate)
-        {
-            if (BirthDate.HasValue && issuedDate.Value < BirthDate.Value.AddYears(14))
-                throw new InvalidPassportDateException(BirthDate.Value, issuedDate.Value);
-
-            IssuedDate = issuedDate;
-            updated = true;
-        }
-
-        if (birthDate.HasValue && BirthDate != birthDate)
-        {
-            if (IssuedDate.HasValue && IssuedDate.Value < birthDate.Value.AddYears(14))
-                throw new InvalidPassportDateException(birthDate.Value, IssuedDate.Value);
-
-            BirthDate = birthDate;
-            updated = true;
-        }
-
-        if (birthPlace != null && BirthPlace != birthPlace)
-        {
-            BirthPlace = birthPlace;
-            updated = true;
-        }
-
-        if (registrationAddress != null && RegistrationAddress != registrationAddress)
-        {
-            RegistrationAddress = registrationAddress;
-            updated = true;
-        }
-
-        if (updated)
-            UpdatedAt = DateTime.UtcNow;
-
-        return updated;
+    /// <summary>
+    /// Обновляет паспортные данные.
+    /// </summary>
+    public void Update(
+        PassportSeries series,
+        PassportNumber number,
+        Name issuedBy,
+        DateTime? issuedDate,
+        DateTime? birthDate,
+        Name birthPlace,
+        Address registrationAddress
+    )
+    {
+        Series = series ?? throw new ArgumentNullValueException(nameof(series));
+        Number = number ?? throw new ArgumentNullValueException(nameof(number));
+        IssuedBy = issuedBy ?? throw new ArgumentNullValueException(nameof(issuedBy));
+        IssuedDate = issuedDate;
+        BirthDate = birthDate;
+        BirthPlace = birthPlace ?? throw new ArgumentNullValueException(nameof(birthPlace));
+        RegistrationAddress = registrationAddress ?? throw new ArgumentNullValueException(nameof(registrationAddress));
+        UpdatedAt = DateTime.UtcNow;
     }
 }

@@ -1,17 +1,16 @@
-﻿using DeliveryService.Domain.Entities;
+using DeliveryService.Domain.Entities;
 
 namespace DeliveryService.Domain.Exceptions;
 
-public class AnotherUserEditDeliveryException : InvalidOperationException
+/// <summary>
+/// Другой отправитель пытается редактировать чужую доставку.
+/// </summary>
+public sealed class AnotherUserEditDeliveryException(Sender actor, Sender owner, Delivery delivery)
+    : InvalidOperationException(
+        $"Отправитель «{actor.Name.Value}» (id = {actor.Id}) не может редактировать доставку id = {delivery.Id}, " +
+        $"так как владельцем является «{owner.Name.Value}» (id = {owner.Id}).")
 {
-    public Delivery Delivery { get; }
-    public Sender CurrentSender { get; }
-
-    // Конструктор с двумя параметрами (используем в Sender)
-    public AnotherUserEditDeliveryException(Delivery delivery, Sender currentSender)
-        : base($"Отправитель {currentSender.Name.Value} не может редактировать доставку {delivery.Id}. Владелец: {delivery.Sender.Name.Value}")
-    {
-        Delivery = delivery;
-        CurrentSender = currentSender;
-    }
+    public Sender Actor => actor;
+    public Sender Owner => owner;
+    public Delivery Delivery => delivery;
 }

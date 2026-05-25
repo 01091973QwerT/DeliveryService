@@ -1,9 +1,10 @@
-﻿using DeliveryService.ValueObjects.Base;
+using DeliveryService.ValueObjects.Base;
 using DeliveryService.ValueObjects.Validators;
 
 namespace DeliveryService.ValueObjects;
 
 /// <summary>
-/// Value Object: Имя (отправителя или получателя)
+/// Обозначает имя отправителя/получателя.
 /// </summary>
-public class Name(string name) : ValueObject<string>(new NameValidator(), name);
+public sealed class Name(string name)
+    : ValueObject<string>(new NameValidator(), (name ?? string.Empty).Trim());

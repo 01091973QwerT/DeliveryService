@@ -1,0 +1,222 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\курсач\\DeliveryService\\DeliveryService.Infrastructure\\DeliveryService.Infrastructure.csproj": {}
+  },
+  "projects": {
+    "F:\\курсач\\DeliveryService\\DeliveryService.Infrastructure\\DeliveryService.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\курсач\\DeliveryService\\DeliveryService.Infrastructure\\DeliveryService.Infrastructure.csproj",
+        "projectName": "DeliveryService.Infrastructure",
+        "projectPath": "F:\\курсач\\DeliveryService\\DeliveryService.Infrastructure\\DeliveryService.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\student\\.nuget\\packages\\",
+        "outputPath": "F:\\курсач\\DeliveryService\\DeliveryService.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.Domain.Repositories.Abstractions\\DeliveryService.Domain.Repositories.Abstractions.csproj": {
+                "projectPath": "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.Domain.Repositories.Abstractions\\DeliveryService.Domain.Repositories.Abstractions.csproj"
+              },
+              "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.Domain\\DeliveryService.Domain.csproj": {
+                "projectPath": "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.Domain\\DeliveryService.Domain.csproj"
+              },
+              "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.ValueObjects\\DeliveryService.ValueObjects.csproj": {
+                "projectPath": "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.ValueObjects\\DeliveryService.ValueObjects.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.Domain.Repositories.Abstractions\\DeliveryService.Domain.Repositories.Abstractions.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.Domain.Repositories.Abstractions\\DeliveryService.Domain.Repositories.Abstractions.csproj",
+        "projectName": "DeliveryService.Domain.Repositories.Abstractions",
+        "projectPath": "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.Domain.Repositories.Abstractions\\DeliveryService.Domain.Repositories.Abstractions.csproj",
+        "packagesPath": "C:\\Users\\student\\.nuget\\packages\\",
+        "outputPath": "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.Domain.Repositories.Abstractions\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.Domain\\DeliveryService.Domain.csproj": {
+                "projectPath": "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.Domain\\DeliveryService.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.Domain\\DeliveryService.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.Domain\\DeliveryService.Domain.csproj",
+        "projectName": "DeliveryService.Domain",
+        "projectPath": "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.Domain\\DeliveryService.Domain.csproj",
+        "packagesPath": "C:\\Users\\student\\.nuget\\packages\\",
+        "outputPath": "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.ValueObjects\\DeliveryService.ValueObjects.csproj": {
+                "projectPath": "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.ValueObjects\\DeliveryService.ValueObjects.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.ValueObjects\\DeliveryService.ValueObjects.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.ValueObjects\\DeliveryService.ValueObjects.csproj",
+        "projectName": "DeliveryService.ValueObjects",
+        "projectPath": "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.ValueObjects\\DeliveryService.ValueObjects.csproj",
+        "packagesPath": "C:\\Users\\student\\.nuget\\packages\\",
+        "outputPath": "F:\\курсач\\DeliveryService\\Domain\\DeliveryService.ValueObjects\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.416\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

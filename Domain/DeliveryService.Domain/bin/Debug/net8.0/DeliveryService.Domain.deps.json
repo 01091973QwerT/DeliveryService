@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "DeliveryService.Domain/1.0.0": {
+        "dependencies": {
+          "DeliveryService.ValueObjects": "1.0.0"
+        },
+        "runtime": {
+          "DeliveryService.Domain.dll": {}
+        }
+      },
+      "DeliveryService.ValueObjects/1.0.0": {
+        "runtime": {
+          "DeliveryService.ValueObjects.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "DeliveryService.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "DeliveryService.ValueObjects/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

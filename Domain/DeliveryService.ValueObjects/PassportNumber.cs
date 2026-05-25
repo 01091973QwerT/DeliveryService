@@ -1,9 +1,10 @@
-﻿using DeliveryService.ValueObjects.Base;
+using DeliveryService.ValueObjects.Base;
 using DeliveryService.ValueObjects.Validators;
 
 namespace DeliveryService.ValueObjects;
 
 /// <summary>
-/// Value Object: Номер паспорта (ровно 6 символов)
+/// Номер паспорта (6 цифр).
 /// </summary>
-public class PassportNumber(string number) : ValueObject<string>(new PassportNumberValidator(), number);
+public sealed class PassportNumber(string number)
+    : ValueObject<string>(new PassportNumberValidator(), (number ?? string.Empty).Trim());

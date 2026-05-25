@@ -1,19 +1,16 @@
-﻿namespace DeliveryService.Domain.Exceptions;
+using DeliveryService.Domain.Entities;
+
+namespace DeliveryService.Domain.Exceptions;
 
 /// <summary>
-/// Исключение: попытка удалить чужую доставку
+/// Другой отправитель пытается удалить чужую доставку.
 /// </summary>
-public class AnotherUserDeleteDeliveryException : InvalidOperationException
+public sealed class AnotherUserDeleteDeliveryException(Sender actor, Sender owner, Delivery delivery)
+    : InvalidOperationException(
+        $"Отправитель «{actor.Name.Value}» (id = {actor.Id}) не может удалить доставку id = {delivery.Id}, " +
+        $"так как владельцем является «{owner.Name.Value}» (id = {owner.Id}).")
 {
-    public Guid DeliveryId { get; }
-    public Guid CurrentUserId { get; }
-    public Guid OwnerId { get; }
-
-    public AnotherUserDeleteDeliveryException(Guid deliveryId, Guid currentUserId, Guid ownerId)
-        : base($"Пользователь {currentUserId} не может удалить доставку {deliveryId}. Владелец доставки: {ownerId}. Удалять доставку может только её владелец.")
-    {
-        DeliveryId = deliveryId;
-        CurrentUserId = currentUserId;
-        OwnerId = ownerId;
-    }
+    public Sender Actor => actor;
+    public Sender Owner => owner;
+    public Delivery Delivery => delivery;
 }

@@ -2,9 +2,6 @@
 
 namespace DeliveryService.Domain.Exceptions;
 
-/// <summary>
-/// Исключение: дата выдачи паспорта должна быть не раньше 14 лет после даты рождения
-/// </summary>
 public class InvalidPassportDateException : InvalidOperationException
 {
     public DateTime BirthDate { get; }

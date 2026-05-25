@@ -1,0 +1,15 @@
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain\bin\Debug\net8.0\DeliveryService.Domain.deps.json
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain\bin\Debug\net8.0\DeliveryService.Domain.dll
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain\bin\Debug\net8.0\DeliveryService.Domain.pdb
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain\bin\Debug\net8.0\DeliveryService.ValueObjects.dll
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain\bin\Debug\net8.0\DeliveryService.ValueObjects.pdb
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain\obj\Debug\net8.0\DeliveryService.Domain.csproj.AssemblyReference.cache
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain\obj\Debug\net8.0\DeliveryService.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain\obj\Debug\net8.0\DeliveryService.Domain.AssemblyInfoInputs.cache
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain\obj\Debug\net8.0\DeliveryService.Domain.AssemblyInfo.cs
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain\obj\Debug\net8.0\DeliveryService.Domain.csproj.CoreCompileInputs.cache
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain\obj\Debug\net8.0\Delivery.66C35356.Up2Date
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain\obj\Debug\net8.0\DeliveryService.Domain.dll
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain\obj\Debug\net8.0\refint\DeliveryService.Domain.dll
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain\obj\Debug\net8.0\DeliveryService.Domain.pdb
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain\obj\Debug\net8.0\ref\DeliveryService.Domain.dll

@@ -1,9 +1,10 @@
-﻿using DeliveryService.ValueObjects.Base;
+using DeliveryService.ValueObjects.Base;
 using DeliveryService.ValueObjects.Validators;
 
 namespace DeliveryService.ValueObjects;
 
 /// <summary>
-/// Value Object: Серия паспорта (ровно 4 символа)
+/// Серия паспорта (4 цифры).
 /// </summary>
-public class PassportSeries(string series) : ValueObject<string>(new PassportSeriesValidator(), series);
+public sealed class PassportSeries(string series)
+    : ValueObject<string>(new PassportSeriesValidator(), (series ?? string.Empty).Trim());

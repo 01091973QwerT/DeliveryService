@@ -1,0 +1,17 @@
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\bin\Debug\net8.0\DeliveryService.Domain.Repositories.Abstractions.deps.json
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\bin\Debug\net8.0\DeliveryService.Domain.Repositories.Abstractions.dll
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\bin\Debug\net8.0\DeliveryService.Domain.Repositories.Abstractions.pdb
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\bin\Debug\net8.0\DeliveryService.Domain.dll
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\bin\Debug\net8.0\DeliveryService.ValueObjects.dll
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\bin\Debug\net8.0\DeliveryService.Domain.pdb
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\bin\Debug\net8.0\DeliveryService.ValueObjects.pdb
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\obj\Debug\net8.0\DeliveryService.Domain.Repositories.Abstractions.csproj.AssemblyReference.cache
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\obj\Debug\net8.0\DeliveryService.Domain.Repositories.Abstractions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\obj\Debug\net8.0\DeliveryService.Domain.Repositories.Abstractions.AssemblyInfoInputs.cache
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\obj\Debug\net8.0\DeliveryService.Domain.Repositories.Abstractions.AssemblyInfo.cs
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\obj\Debug\net8.0\DeliveryService.Domain.Repositories.Abstractions.csproj.CoreCompileInputs.cache
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\obj\Debug\net8.0\Delivery.40CAB654.Up2Date
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\obj\Debug\net8.0\DeliveryService.Domain.Repositories.Abstractions.dll
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\obj\Debug\net8.0\refint\DeliveryService.Domain.Repositories.Abstractions.dll
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\obj\Debug\net8.0\DeliveryService.Domain.Repositories.Abstractions.pdb
+C:\Users\fasto\Desktop\курс\delivery-project-creation\DeliveryService\Domain\DeliveryService.Domain.Repositories.Abstractions\obj\Debug\net8.0\ref\DeliveryService.Domain.Repositories.Abstractions.dll

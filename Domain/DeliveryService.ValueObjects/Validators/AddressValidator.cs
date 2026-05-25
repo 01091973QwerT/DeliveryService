@@ -1,11 +1,8 @@
-﻿using DeliveryService.ValueObjects.Base;
+using DeliveryService.ValueObjects.Base;
 using DeliveryService.ValueObjects.Exceptions;
 
 namespace DeliveryService.ValueObjects.Validators;
 
-/// <summary>
-/// Валидатор для адреса
-/// </summary>
 public class AddressValidator : IValidator<string>
 {
     public static int MAX_LENGTH => 500;

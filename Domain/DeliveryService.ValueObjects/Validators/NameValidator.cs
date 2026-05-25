@@ -1,14 +1,11 @@
-﻿using DeliveryService.ValueObjects.Base;
+using DeliveryService.ValueObjects.Base;
 using DeliveryService.ValueObjects.Exceptions;
 
 namespace DeliveryService.ValueObjects.Validators;
 
-/// <summary>
-/// Валидатор для имени (отправителя/получателя)
-/// </summary>
 public class NameValidator : IValidator<string>
 {
-    public static int MAX_LENGTH => 100;
+    public static int MAX_LENGTH => 255;
     public static int MIN_LENGTH => 2;
 
     public void Validate(string value)
